@@ -1,0 +1,31 @@
+@import "../bourbon/bourbon"
+@mixin create-column
+  @each $percent in 1,2,3,4,5,6,7,8,9,10,11,12
+    &__#{$percent}
+      @include flex-basis(100%/$percent)
+      max-width: 100%/$percent
+.flex-container
+  @include padding(1rem)
+  @include display(flex)
+  @each $flex-direction in row, column, row-reverse, column-reverse
+    &--direction__#{$flex-direction}
+      @include flex-direction($flex-direction)
+  @each $justify-content in start, end, center, space-around, space-between
+    &--justify-content__#{$justify-content}
+      @include justify-content($justify-content)
+  @each $align-items in flex-start, flex-end, center, baseline, strech
+    &--align-items__#{$align-items}
+      @include align-items($align-items)
+  @each $flex-wrap in wrap, nowrap, wrap-reverse
+    &--flex-wrap__#{$flex-wrap}
+      @include flex-wrap($flex-wrap)
+.flex-box
+  @include padding(1rem)
+  @include box-sizing(border-box)
+  @include flex(0 0 auto)
+  &--xs
+    @include create-column
+  @each $media, $size in (45: sm, 62: md, 75: lg)
+    @media only screen and (min-width: #{$media}em)
+      &--#{$size}
+        @include create-column

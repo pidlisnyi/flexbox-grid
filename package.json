@@ -1,0 +1,22 @@
+{
+  "name": "flexbox-sass",
+  "version": "1.0.0",
+  "description": "flexbox grids with bourbon mixins",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "flexbox",
+    "sass",
+    "bourbon",
+    "grid"
+  ],
+  "author": "Constantine Podlesny",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-less": "^3.0.5",
+    "gulp-sass": "^2.2.0"
+  }
+}

@@ -1,0 +1,65 @@
+@import "../lesshat/build/lesshat";
+@import "../lesshat/build/lesshat-prefixed";
+
+.column(@name; @columns; @index: 1) when (@index =< @columns) {
+  .column(@name; @columns; (@index + 1));
+  &--@{name}__@{index} {
+    .flex-basis(( percentage(@index / @columns) ));
+    max-width:( percentage(@index / @columns) );
+  }
+}
+.for(@list, @code) {
+  & {
+    .loop(@i:1) when (@i =< length(@list)) {
+      @value: extract(@list, @i);
+      @code();
+      .loop(@i + 1);
+    }
+    .loop();
+  }
+}
+@direction: row, column;
+@wrap: wrap, nowrap, wrap-reverse;
+@justify-content: center, flex-end, flex-start, space-around, space-between;
+@align-items: baseline, center, flex-end, flex-start, inherit, stretch;
+.flex-container, .flex-box {
+  transition: all .3s ease;
+}
+.flex-container {
+  .display(flex);
+  .for(@direction, {
+    &--direction__@{value}:extend(.flex-container) {
+      .flex-direction(@value);
+    }
+  });
+  .for(@wrap, {
+    &--wrap__@{value}:extend(.flex-container) {
+      .flex-wrap(@value);
+    }
+  });
+  .for(@justify-content, {
+    &--justify-content__@{value}:extend(.flex-container) {
+      .justify-content(@value);
+    }
+  });
+  .for(@align-items, {
+    &--justify-content__@{value}:extend(.flex-container) {
+      .align-items(@value);
+    }
+  });
+}
+.flex-box {
+  box-sizing: border-box;
+  padding: 10px;
+  .flex(0 0 auto);
+  .column(xs; 12);
+  @media only screen and (min-width: 48em) {
+    .column(sm; 12);
+  }
+  @media only screen and (min-width: 62em) {
+    .column(md; 12);
+  }
+  @media only screen and (min-width: 75em) {
+    .column(lg; 12);
+  }
+}
