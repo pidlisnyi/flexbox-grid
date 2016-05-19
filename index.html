@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flexbox grid</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .crimson {
+            background-color: rgba(220, 20, 60, 0.4);
+        }
+
+        .royalblue {
+            min-height: 200px;
+            background-color: rgba(65, 105, 225, 0.4);
+
+        }
+        .green {
+            min-height: 200px;
+            background-color: rgba(0, 128, 0, 0.4);
+        }
+    </style>
+    <link rel="stylesheet" href="dist/flexbox.css">
+</head>
+<body>
+
+
+<div class="crimson flex-container__row__space-around__center__wrap">
+    <div class="royalblue flex-box--xs__1 flex-box--md__2">
+        <h1>Box</h1>
+    </div>
+    <div class="green flex-box--xs__1 flex-box--md__2">
+        <h1>Box</h1>
+    </div>
+</div>
+
+</body>
+</html>

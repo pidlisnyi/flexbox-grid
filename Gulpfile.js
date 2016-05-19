@@ -9,6 +9,12 @@ gulp.task('sass', function () {
       .pipe(gulp.dest('./dist'));
 });
 
+gulp.task('scss', function () {
+  return gulp.src('./src/**/*.scss')
+      .pipe(sass.sync({outputStyle: 'compressed'}).on('error', sass.logError))
+      .pipe(gulp.dest('./dist'));
+});
+
 gulp.task('sass:watch', function () {
   gulp.watch('./src/**/*.sass', ['sass']);
 });
